@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmileUp Dental</title>
+    <link rel="stylesheet" href="/niyaw/Client/general.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+.front{
+    background-image: url(/niyaw/images/homepage1.jpg);
+    height: 100vh;
+}
+        
+#intro{
+    text-align:center;
+    font-size: 25px;
+    padding:200px;
+}
+
+.services_intro {
+    background-color: #F6F5F5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px; 
+    padding: 60px 20px;
+}
+
+.container {
+    text-align: center;
+    width: 25%; 
+    padding: 20px;
+}
+
+.container img{
+    height: 60px;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.main_container{
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.containerright {
+    padding-top: 70px;
+    display: flex;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 40px;
+    width: 80%;
+    padding-right: 300px;
+    
+}
+
+.containerright > div { /* Targeting the direct div child */
+    padding-left: 100px;
+    display: flex; /* Changed to flex */
+    flex-direction: column; /* Added to stack items vertically */
+    align-items: flex-start; /* Ensure items within this div start aligned */
+}
+
+
+.containerright img {
+    padding-right: 10px;
+    height: 460px;
+    width: 660px;
+}
+
+.containerleft {
+    display: flex;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-bottom: 40px;
+    flex-direction: row-reverse; 
+    padding-top: 70px;
+    width: 80%;
+    padding-left: 300px;
+}
+
+
+.containerleft > div { /* Targeting the direct div child */
+    padding-right: 100px;
+    display: flex; /* Changed to flex */
+    flex-direction: column; /* Added to stack items vertically */
+    align-items: flex-start; /* Ensure items within this div start aligned */
+}
+
+.containerleft img {
+    height: 460px;
+    width: 660px;
+    padding-left: 10px;
+}
+
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+}
+.contact-item i {
+    margin-right: 10px;
+}
+
+#map {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+    .containerright, .containerleft {
+        flex-direction: column; 
+        align-items: center;
+        text-align: center; 
+        width: 95%;
+    }
+    .containerright div, .containerleft div {
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 20px;
+    }
+    .containerright img, .containerleft img {
+        padding: 0;
+        max-width: 100%; 
+        height: auto;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+  <div class="top_bar">
+    <div class="top-bar_inner">
+      <a href="https://www.facebook.com/Smileupdentalclinicbydr.anne/"><img src="/niyaw/images/fb_icon.png" id="fb_icon" alt="Logo"></a>
+      <a href="Appointment.html" class="btn">Book an Appointment</a>
+    </div>
+  </div>
+
+  <div class="front">
+    <div class="navbar">
+        <div class="navbar_pages">
+            <a href="homepage.html">Home</a>
+            <a href="service.html">Services</a>
+            <a href="dentalcare.html">Dental Care</a>
+            <a href="">Contact US</a>
+        </div>
+    </div>
+  </div>
+    
+
+    <div id="intro">
+      <p>
+        Smile Up Dental Clinic is committed to providing high-quality dental care with a focus on
+        patient comfort and satisfaction. Conveniently located on the 2nd floor of Corporate
+        Center, Paciano, Calamba City, Laguna, we offer a range of dental services to help you
+        achieve a healthy and confident smile. Visit us today and experience expert care in a
+        welcoming environment
+      </p>
+    </div>
+
+    <div class="services_intro">
+
+      <h2 class="header">Our Services</h2>
+
+      <div class="container">
+        <img src="/niyaw/images/logo_1.png">
+        <h3>
+          GENERAL DENTISTRY
+        </h3>
+        <p>
+          Dental Cleaning / Oral Prophylaxis, Permanent Tooth Filling, Pit & Fissure Sealants and more
+        </p>
+      </div>
+      
+      <div class="container">
+        <img src="/niyaw/images/logo_2.png">
+        <h3>
+          CONSULTATION
+        </h3>
+        <p>
+          Don’t know where to start? Book a consultation with our specialists to know more about your oral health. We also offer diagnostics such as X-rays and 3D scans.
+        </p>
+      </div>
+
+      <div class="container">
+        <img src="/niyaw/images/logo_3.png">
+        <h3>
+          PAIN RELIEF
+        </h3>
+        <p>
+          Can’t sleep due to a toothache? Medications don’t seem to work? Contact us or come over to our clinic
+          for an emergency treatment.
+        </p>
+      </div>
+
+      <div class="container">
+        <img src="/niyaw/images/logo_4.png">
+        <h3>
+          DENTAL CROWN & VENEERS
+        </h3>
+        <p>
+          A whole new you! We have solutions to give you a brand new smile with veneers, dental crowns or bridges.
+        </p>
+      </div>
+
+      <div class="container">
+        <img src="/niyaw/images/logo_5.png">
+        <h3>
+          PEDIATRIC DENTISTRY
+        </h3>
+        <p>
+          Looking for the best dentist for your child? Book an appointment with our pediatric dentists that will take care of your little one.
+        </p>
+      </div>
+
+      <div class="container">
+        <img src="/niyaw/images/logo_6.png">
+        <h3>
+          DENTAL IMPLANTS
+        </h3>
+        <p>
+          Missing a tooth? Restore those gaps with teeth that feel and look like your own
+        </p>
+      </div>
+    </div>
+
+  <diV class="main_container">
+    <h2 class="header">Our Location</h2>
+    <div class="containerright">
+      <div class="img">
+        <img src="/niyaw/images/loc.jpeg" alt="">
+      </div>
+      <div>
+        <h2>Paciano Rizal</h2>
+        <hr style="border: 1px solid #ccc; margin: 20px 0; width: 300px;">
+        <p>2nd floor Corporate Building Paciano Rizal, Calamba</p>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+639171058775</span>
+        </div>
+
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+639209498771</span>
+        </div>
+
+        <a href="https://maps.app.goo.gl/kgtzF1R6uzaU9X7j6" id="map">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Map</span>
+          </div>
+        </a>
+        <br>
+        <a href="Appointment.html" class="btn">Book an Appointment</a>
+      </div>
+    </div>
+
+
+    <div class="containerleft">
+      <div class="img">
+        <img src="/niyaw/images/loc2.jpg" alt="">
+      </div>
+      <div>
+        <h2>Majada </h2>
+        <hr style="border: 1px solid #ccc; margin: 20px 0; width: 300px;">
+        <br>
+        <p>Purok 1 Majada Out Rd, Calamba</p>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+639209498771</span>
+        </div>
+
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+639171058775</span>
+        </div>
+
+        <a href="https://maps.app.goo.gl/4dcre91uZcNBdbFX6" id="map">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Map</span>
+        </div>
+        </a>
+        <br>
+        <a href="Appointment.html" class="btn">Book an Appointment</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>     
+        <p>6569+Q3R, General Lim St, Calamba, 4027 Laguna</p>
+    </div>
+  </div>
+
+
+</body>
+</html>

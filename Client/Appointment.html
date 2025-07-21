@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calendar with Time Slots</title>
+  <style>
+ * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  #calendar-wrapper{
+    padding-top: 100px;
+  }
+  
+  .calendar-container {
+    display: flex;
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  
+  .calendar {
+    width: 60%;
+    padding: 20px;
+  }
+  
+  .calendar header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .calendar header h3 {
+    font-size: 1.5rem;
+  }
+  
+  #prev, #next {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+  }
+  
+  #prev::before, #next::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    transform: rotate(45deg);
+    margin: auto;
+  }
+  
+  #prev::before {
+    transform: rotate(-135deg);
+  }
+  
+  #next::before {
+    transform: rotate(45deg);
+  }
+  
+  .days, .dates {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  
+  .days li, .dates li {
+    width: calc(100% / 7);
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px 0;
+  }
+  
+  .dates li {
+    cursor: pointer;
+    border-radius: 10%;
+    transition: background 0.3s;
+  }
+  
+  .dates li:hover {
+    background: rgba(223, 113, 47, 0.5);
+  }
+  
+  .dates li.today {
+    background: #DF712F;
+    color: #fff;
+  }
+  
+  .dates li.inactive {
+    color: #ccc;
+    pointer-events: none;
+  }
+  
+  .time-slot-container {
+    width: 40%;
+    border-left: 1px solid #eee;
+    padding: 20px;
+    background: #f9f9f9;
+  }
+  
+  .time-slot-container h3 {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  #time-slots {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #time-slots li {
+    display: block;
+    margin: 8px 0;
+    padding: 10px 15px;
+    background-color: #f2f2f2;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-align: center;
+  }
+  
+  #time-slots li:hover {
+    background-color: #e6e6e6;
+  }
+  
+
+  #user-form {
+    max-width: 20%;
+    margin: 60px auto;
+    padding: 24px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding-right: 30px;
+  }
+
+  #user-form h2 {
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #DF712F;
+  }
+
+  #user-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #DF712F;
+  }
+
+  #user-form input,
+  #user-form select {
+    width: 96%;
+    padding: 8px 5px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  #user-form input:focus,
+  #user-form select:focus {
+    outline: none;
+    border-color: #DF712F;
+    box-shadow: 0 0 4px rgba(223,113,47,0.4);
+  }
+
+  #user-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #DF712F;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  #user-form button:hover {
+    background-color: #c25a22;
+  }
+
+  #user-form br {
+    display: none;
+  }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div id="user-form">
+    <h2>Book an Appointment</h2>
+    <form id="infoForm">
+      <label>First Name:</label><br>
+      <input type="text" id="firstName" name="first_name" required><br><br>
+  
+      <label>Last Name:</label><br>
+      <input type="text" id="lastName" name="last_name" required><br><br>
+  
+      <label>Gender:</label><br>
+      <select id="gender" name="gender" required>
+        <option value="">Select</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select><br><br>
+  
+      <label>Phone Number:</label><br>
+      <input type="tel" id="phone" name="phone" required><br><br>
+  
+      <label>Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+  
+      <button type="submit">Continue</button>
+    </form>
+  </div>
+
+
+  <div id="calendar-wrapper" style="display:none;">
+    <div class="calendar-container">
+      <div class="calendar">
+        <header>
+          <button id="prev"></button>
+          <h3></h3>
+          <button id="next"></button>
+        </header>
+        <ul class="days">
+          <li>Sun</li>
+          <li>Mon</li>
+          <li>Tue</li>
+          <li>Wed</li>
+          <li>Thu</li>
+          <li>Fri</li>
+          <li>Sat</li>
+        </ul>
+        <ul class="dates"></ul>
+      </div>
+    
+      <div class="time-slot-container">
+        <h3 id="selected-date">Select a date</h3>
+        <ul id="time-slots"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const header = document.querySelector(".calendar h3");
+    const dates = document.querySelector(".dates");
+    const navs = document.querySelectorAll("#prev, #next");
+    const timeSlotContainer = document.querySelector(".time-slot-container");
+    const timeSlots = document.querySelector("#time-slots");
+    const selectedDateElement = document.querySelector("#selected-date");
+
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    let date = new Date();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+
+    let userData = {};
+
+    function convert24to12(timeSlot) {
+      if (timeSlot.includes('-')) {
+        const [startTime, endTime] = timeSlot.split('-');
+        return `${convert24HourTo12Hour(startTime)} - ${convert24HourTo12Hour(endTime)}`;
+      } 
+      return convert24HourTo12Hour(timeSlot);
+    }
+    
+    function convert24HourTo12Hour(time) {
+      if (!time || !time.includes(':')) return time;
+      const [hours, minutes] = time.split(':');
+      let period = 'AM';
+      let hour = parseInt(hours, 10);
+      if (hour >= 12) {
+        period = 'PM';
+        if (hour > 12) hour -= 12;
+      }
+      if (hour === 0) hour = 12;
+      return `${hour}:${minutes}${period}`;
+    }
+
+    document.getElementById("infoForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      userData = {
+        firstName: document.getElementById("firstName").value.trim(),
+        lastName: document.getElementById("lastName").value.trim(),
+        gender: document.getElementById("gender").value,
+        phone: document.getElementById("phone").value.trim(),
+        email: document.getElementById("email").value.trim()
+      };
+      document.getElementById("user-form").style.display = "none";
+      document.getElementById("calendar-wrapper").style.display = "block";
+    });
+
+    function updateTimeSlots(slots, selectedDate) {
+      timeSlots.innerHTML = '';
+      selectedDateElement.textContent = `Available time slots for ${selectedDate}`;
+
+      slots.forEach(slot => {
+        const li = document.createElement('li');
+        li.textContent = convert24to12(slot);
+        li.addEventListener('click', () => {
+          document.querySelectorAll('#time-slots li').forEach(item => {
+            item.classList.remove('selected');
+          });
+          li.classList.add('selected');
+          alert(`You selected ${convert24to12(slot)} on ${selectedDate}`);
+        });
+        timeSlots.appendChild(li);
+      });
+
+      timeSlotContainer.style.display = 'block';
+    }
+
+    //calendar
+    function renderCalendar() {
+      const start = new Date(year, month, 1).getDay();
+      const endDate = new Date(year, month + 1, 0).getDate();
+      const end = new Date(year, month, endDate).getDay();
+      const endDatePrev = new Date(year, month, 0).getDate();
+
+      let datesHtml = "";
+
+      for (let i = start; i > 0; i--) {
+        datesHtml += `<li class="inactive">${endDatePrev - i + 1}</li>`;
+      }
+
+      for (let i = 1; i <= endDate; i++) {
+        let className =
+          i === new Date().getDate() &&
+          month === new Date().getMonth() &&
+          year === new Date().getFullYear()
+            ? ' class="today"'
+            : "";
+        datesHtml += `<li${className} data-date="${i}">${i}</li>`;
+      }
+
+      for (let i = end; i < 6; i++) {
+        datesHtml += `<li class="inactive">${i - end + 1}</li>`;
+      }
+
+      dates.innerHTML = datesHtml;
+      header.textContent = `${months[month]} ${year}`;
+    }
+
+    function showTimeSlots(day) {
+      const selectedDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      selectedDateElement.textContent = `${months[month]} ${day}, ${year}`;
+      timeSlots.innerHTML = "<li>Loading...</li>";
+
+      fetch(`/niyaw/Client/get_availability.php?date=${selectedDate}`)
+        .then(res => res.json())
+        .then(slots => {
+          timeSlots.innerHTML = "";
+          if (slots.length === 0) {
+            timeSlots.innerHTML = "<li>No available slots</li>";
+            return;
+          }
+          slots.forEach(time => {
+            const li = document.createElement("li");
+            li.textContent = convert24to12(time);
+            li.addEventListener("click", () => {
+              document.querySelectorAll('#time-slots li').forEach(item => {
+                item.classList.remove('selected');
+              });
+              li.classList.add('selected');
+              
+              const confirmBooking = confirm(`Confirm booking for ${convert24to12(time)} on ${selectedDateElement.textContent}?`);
+              if (!confirmBooking) return;
+
+              const formData = new FormData();
+              formData.append("first_name", userData.firstName);
+              formData.append("last_name", userData.lastName);
+              formData.append("gender", userData.gender);
+              formData.append("phone", userData.phone);
+              formData.append("email", userData.email);
+              formData.append("date", selectedDate);
+              formData.append("time_slot", time);
+
+              fetch("/niyaw/Client/save_appointment.php", {
+                method: "POST",
+                body: formData
+              })
+              .then(res => res.text())
+              .then(response => {
+                alert(response);
+                window.location.href = "homepage.html"; 
+              })
+              .catch(err => {
+                console.error("Error saving appointment:", err);
+              });
+            });
+            timeSlots.appendChild(li);
+          });
+        })
+        .catch(() => {
+          timeSlots.innerHTML = "<li>Error loading slots</li>";
+        });
+
+      timeSlotContainer.style.display = "block";
+    }
+
+    dates.addEventListener("click", (e) => {
+      const day = e.target.dataset.date;
+      if (day) showTimeSlots(day);
+    });
+
+    navs.forEach(nav => {
+      nav.addEventListener("click", () => {
+        if (nav.id === "prev") {
+          if (month === 0) {
+            year--;
+            month = 11;
+          } else {
+            month--;
+          }
+        } else {
+          if (month === 11) {
+            year++;
+            month = 0;
+          } else {
+            month++;
+          }
+        }
+        renderCalendar();
+      });
+    });
+
+    renderCalendar();
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+      fetch(`get_appointments.php?date=${dbFormat}`)
+        .then(res => res.json())
+        .then(data => {
+          const appointmentsDiv = document.createElement("div");
+          appointmentsDiv.classList.add("mt-4", "text-sm", "w-full");
+          appointmentsDiv.innerHTML = "<h4 class='font-bold text-orange mb-2'>Appointments</h4>";
+
+          if (data.length === 0) {
+            appointmentsDiv.innerHTML += "<p class='text-gray-500'>No appointments.</p>";
+          } else {
+            data.forEach(item => {
+              appointmentsDiv.innerHTML += `<p>🕒 ${item.time_slot} - ${item.full_name}</p>`;
+            });
+          }
+
+          slotContainer.appendChild(appointmentsDiv);
+        })
+        .catch(err => console.error(err));

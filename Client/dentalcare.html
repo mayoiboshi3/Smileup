@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="general.css">
+
+<style>
+
+.front {
+  background-image: url(/niyaw/images/78560998_114653406678554_6412583732833681408_n.jpg);
+  height: 100vh;
+}
+
+#intro {
+  text-align: justify;
+  font-size: 25px;
+  padding: 100px;
+}
+
+.main_container {
+    margin: 10px;
+    padding: 10px;
+}
+
+
+.container2 {
+    text-align: justify;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin: 0px 10px;
+    padding: 100px 100px 100px 100px;
+    max-width: 1400px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.text-content {
+    flex: 3; 
+    padding: 10px 30px 10px 50px;
+}
+
+.image-content {
+    flex: 3; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 100px;
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain; 
+}
+
+.services_intro {
+  background-color: #F6F5F5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px; 
+  padding: 60px 20px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    background-color: #F6F5F5;
+    margin-bottom: 40px;
+    padding: 100px 100px 150px 100px;
+}
+
+.container div {
+  margin: 100px 100px 10px 00px;
+}
+
+.container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; 
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 30px;
+  text-align: center;
+}
+
+
+/* Responsive layout */
+@media (max-width: 800px) {
+  .container2 { 
+    flex-direction: column;
+    margin: 0px 20px;
+    gap: 20px; /* Reduce the gap on mobile for better space usage */
+  }
+  
+  .text-content, .image-content {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .image-content img {
+    max-width: 80%; 
+  }
+  
+  .flex-item-left, .flex-item-right {
+    flex: 100%;
+  }
+}
+
+/* Add zoom resilience */
+@media (min-width: 1400px) {
+  .container2 {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+  <div class="top_bar">
+    <div class="top-bar_inner">
+      <a href="https://www.facebook.com/Smileupdentalclinicbydr.anne/"><img src="/niyaw/images/fb_icon.png" id="fb_icon" alt="Logo"></a>
+      <a href="Appointment.html" class="btn">Book an Appointment</a>
+    </div>
+  </div>
+
+    <div class="front">
+    <div class="navbar">
+        <div class="navbar_pages">
+            <a href="homepage.html">Home</a>
+            <a href="service.html">Services</a>
+            <a href="dentalcare.html">Dental Care</a>
+            <a href="">Contact US</a>
+        </div>
+    </div>
+    </div>
+    
+    <div class="container2">
+        <div class="text-content">
+            <h2>Brush Your Teeth</h2>
+            <p>To keep your teeth healthy, it is important to remove dental plaque, a sticky, colorless film of bacteria. Plaque buildup can cause tooth decay and gum
+              disease. <br>
+              <br>Even teeth that already have fillings are at risk for tooth decay. Plaque can build up underneath a chipped filling and cause new decay. And if there are
+              areas in your mouth where your gums have pulled away from the teeth
+              (called gum recession), the exposed tooth roots can decay as well.<br>
+              <br>Dental plaque is hard to see. You can see it more easily if you stain it. After you brush your teeth, chew "disclosing tablets" (which you can buy at a drug
+              store), or brush with a special disclosing toothpaste. The color will show you where there is still plaque, and you can then brush those areas again to
+              remove it. (Parents – Disclosing tablets can also be very helpful for teaching children how to do a good job brushing their teeth!)
+            </p>
+        </div>
+        <div class="image-content">
+            <img src="/niyaw/images/ToothTrivia.png" alt="Tooth Trivia">
+        </div>
+    </div>
+    
+    <div class="container">
+      <div class="img">
+          <img src="/niyaw/images/Malocclusion.png" alt="Class III Malocclusion">
+      </div>
+      <div>
+          <p><strong>Class 3 malocclusion</strong>, also known as an <b>underbite</b>, is a dental misalignment where the lower teeth protrude past the upper teeth. It's caused by abnormal jaw growth or genetics, or both.</p>
+          <p><b>Symptoms:</b> Lower molars that are too far forward, A prominent chin, A concave facial profile, Difficulty chewing, and Prematurely worn teeth.</p>
+          <p><b>Treatment:</b> Growth modification – Treatment that begins before the growth spurt can improve facial aesthetics and normal occlusion.</p>
+          <p><b>Orthodontic camouflage:</b> Braces or clear aligners can correct the misalignment.</p>
+          <p><b>Orthognathic surgery:</b> A more invasive option that may be necessary if the malocclusion is severe or left untreated until adulthood.</p>
+          <a href="Appointment.html"><button class="btn">Book an Appointment</button></a>
+      </div>
+    </div>
+
+    <div class="container2">
+      <div class="text-content">
+          <p><b>A fluoride treatment</b> is a dental procedure that strengthens tooth enamel and reduces the
+            risk of cavities. Fluoride is a natural mineral that can be found in water, food, and soil.
+            <h2>How it works</h2>
+            ● Fluoride remineralizes enamel by helping teeth absorb calcium and phosphate <br>
+            ● Fluoride can stop and reverse the progression of cavities <br> 
+            ● Fluoride can reduce tooth sensitivity and prevent gum disease
+            <h2>How it's applied</h2>
+            ● A dentist or dental hygienist applies fluoride in the form of a gel, foam, varnish, or rinse<br>
+            ●The treatment is quick and painless You can resume normal activities right after the treatment
+          </p>    
+          <a href="Appointment.html"><button class="btn">Book an Appointment</button></a>
+      </div>
+      <div class="image-content">
+          <img src="/niyaw/images/FlourideTreatment.png" alt="FlourideTreatment">
+      </div>
+  </div>
+
+    <div class="footer">
+        <p>6569+Q3R, General Lim St, Calamba, 4027 Laguna</p>
+    </div>
+</body>
+</html>
